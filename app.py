@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route('/keep_alive', methods=['GET'])
 def keep_alive():
-  return 'Server is alive!'
+  return 'Server is alive!!!'
 
 
 @app.route('/', methods=['GET'])
