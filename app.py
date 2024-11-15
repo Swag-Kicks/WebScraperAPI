@@ -131,7 +131,7 @@ def get_product_data():
 
     # Construct the API response
     api_response = {
-        'brand': brand,
+        'Marke': brand,
         'color': color,
         'country': country,
         'type': type,
