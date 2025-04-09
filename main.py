@@ -31,7 +31,7 @@ class GoogleLens:
         options = Options()
         #options.add_argument("--disable-gpu")
         # Uncomment the next line to run in headless mode
-        options.add_argument("--headless")
+        # options.add_argument("--headless")
         
         # Initialize the WebDriver (make sure you have the correct path to the driver)
         self.driver = uc.Chrome(options=options)
@@ -81,9 +81,9 @@ class GoogleLens:
             # Get the HTML content of the page after JavaScript execution
             page_content = self.driver.page_source
             
-            # Save the HTML content to a file (for debugging)
-            with open('response_content.html', 'w', encoding='utf-8') as file:
-                file.write(page_content)
+            # # Save the HTML content to a file (for debugging)
+            # with open('response_content.html', 'w', encoding='utf-8') as file:
+            #     file.write(page_content)
             
             # Parse the HTML content to get image links
             prerender_script = self.__get_prerender_script(page_content)
