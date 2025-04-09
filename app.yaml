@@ -1,0 +1,7 @@
+runtime: python310
+
+instance_class: F4_1G
+# Optional: Define handlers if static files are served
+handlers:
+  - url: /.*
+    script: main.app
