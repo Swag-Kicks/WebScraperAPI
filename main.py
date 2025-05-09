@@ -76,7 +76,7 @@ class GoogleLens:
             self.driver.get(full_url)
             
             # Wait for the page to load fully (can adjust wait time if needed)
-            time.sleep(6)  # Adjust the sleep time to ensure the page is loaded
+            time.sleep(2)  # Adjust the sleep time to ensure the page is loaded
             
             # Get the HTML content of the page after JavaScript execution
             page_content = self.driver.page_source

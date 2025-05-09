@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="E:\muzz\v1\extentsion work\Trift Ops\ThriftTops-Extension\venv"
+VIRTUAL_ENV="D:\vin\WebScraperAPI\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
