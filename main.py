@@ -34,7 +34,8 @@ class GoogleLens:
         # options.add_argument("--headless")
         
         # Initialize the WebDriver (make sure you have the correct path to the driver)
-        self.driver = uc.Chrome(options=options)
+        self.driver = uc.Chrome(version_main=138, options=options)
+
 
     def __get_prerender_script(self, page: str):
         """
@@ -847,7 +848,7 @@ def get_data4():
         lock = threading.Lock()
 
         def fetchCategoryAspects(categoryID,token):
-          url = "https://global.thriftops.com/api/v1/getCategoryAspectsFB?category_id=15687"
+          url = "https://ebay-api-920776443733.europe-west1.run.app/api/v1/getCategoryAspectsFB?category_id=15687"
 
           payload = json.dumps({
             "token": token
@@ -857,7 +858,7 @@ def get_data4():
             'Cookie': 'connect.sid=s%3AuTDH_5nvCY5WasAeZjyieT7Z326oaabd.zLFzbLPlZQjE19RXWcE1w6aYEUTwuyCArC03mo0coYU'
           }
 
-          response = requests.request("POST", "https://global.thriftops.com/api/v1/getCategoryAspectsFB?category_id="+str(categoryID), headers=headers, data=payload)
+          response = requests.request("POST", "https://ebay-api-920776443733.europe-west1.run.app/api/v1/getCategoryAspectsFB?category_id="+str(categoryID), headers=headers, data=payload)
           if response.status_code == 404:
             print("Response token expired")
             return "null"
@@ -1084,7 +1085,7 @@ def get_data5():
             return finalResult
             
         def fetchCategoryAspects(categoryID,token):
-          url = "https://global.thriftops.com/api/v1/getCategoryAspectsFB?category_id=15687"
+          url = "https://ebay-api-920776443733.europe-west1.run.app/api/v1/getCategoryAspectsFB?category_id=15687"
 
           payload = json.dumps({
             "token": token
@@ -1094,7 +1095,7 @@ def get_data5():
             'Cookie': 'connect.sid=s%3AuTDH_5nvCY5WasAeZjyieT7Z326oaabd.zLFzbLPlZQjE19RXWcE1w6aYEUTwuyCArC03mo0coYU'
           }
 
-          response = requests.request("POST", "https://global.thriftops.com/api/v1/getCategoryAspectsFB?category_id="+str(categoryID), headers=headers, data=payload)
+          response = requests.request("POST", "https://ebay-api-920776443733.europe-west1.run.app/api/v1/getCategoryAspectsFB?category_id="+str(categoryID), headers=headers, data=payload)
           if response.status_code == 404:
             print("Response token expired")
             return "null"
@@ -1350,14 +1351,14 @@ def get_data6():
             return finalResult
             
         def fetchCategoryAspects(categoryID):
-          url = "https://global.thriftops.com/api/v1/getCategoryAspectsRAPIDAPI?category_id=15687"
+          url = "https://ebay-api-920776443733.europe-west1.run.app/api/v1/getCategoryAspectsRAPIDAPI?category_id=15687"
 
           headers = {
             'Content-Type': 'application/json',
             'Cookie': 'connect.sid=s%3AuTDH_5nvCY5WasAeZjyieT7Z326oaabd.zLFzbLPlZQjE19RXWcE1w6aYEUTwuyCArC03mo0coYU'
           }
 
-          response = requests.request("POST", "https://global.thriftops.com/api/v1/getCategoryAspectsRAPIDAPI?category_id="+str(categoryID), headers=headers)
+          response = requests.request("POST", "https://ebay-api-920776443733.europe-west1.run.app/api/v1/getCategoryAspectsRAPIDAPI?category_id="+str(categoryID), headers=headers)
           if response.status_code == 404:
             print("Response token expired")
             return "null"
