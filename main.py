@@ -53,8 +53,8 @@ class GoogleLens:
         Parses the raw links to organize them into a structured data format.
         """
         data = {"similar": []}
-        print("Visual Matches Found:")
-        print(visual_matches)
+       
+       
 
         for link in visual_matches:
             data["similar"].append(
@@ -92,7 +92,7 @@ class GoogleLens:
             return self.__parse_prerender_script(prerender_script)
         
         except Exception as e:
-            print(f"Error occurred: {e}")
+          
             return None
         
         finally:
@@ -137,7 +137,7 @@ def AddDatatoDatabase():
     conn.close()
     return jsonify("success" + uploaded_id), 200
   except Exception as e:
-    print(str(e))
+   
     return jsonify({'error': str(e)}), 500
 
 
@@ -169,7 +169,7 @@ def GetLinksFromSerpAPI(p_url):
 
         return ebay_links
     except:
-        print("Error:")
+        
         return []
 
 def find_ebay_links(image_url):
@@ -328,14 +328,26 @@ def get_product_data():
     def checkAll():
       if any(value == '' for value in
              [brand, color, country, type, upc, material, model, price]):
-        print("0")
+        
         return False
       else:
         return True
 
     for url in urls:
       try:
-        response = requests.get(url,timeout=5)
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0',
+            'Accept-Language': 'en-US,en;q=0.9',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'DNT': '1',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1',
+            'Referer': 'https://www.ebay.com/'
+        }
+
+        response = requests.get(url, headers=headers, timeout=10)
+       
         soup = BeautifulSoup(response.text, 'html.parser')
         evo_rows = soup.find_all('div', class_='ux-layout-section-evo__row')
         if(title==''):
@@ -359,38 +371,38 @@ def get_product_data():
                     'div', class_='ux-labels-values__values-content').find(
                         'span', class_='ux-textspans').text
                 brand = value_text
-                print(f"Brand: {value_text}")
+                
               elif label_text == 'Color' and color == '':
                 value_text = values.find(
                     'div', class_='ux-labels-values__values-content').find(
                         'span', class_='ux-textspans').text
                 color = value_text
-                print(f"Color: {value_text}")
+               
               elif label_text == 'Country/Region of Manufacture' and country != '':
                 value_text = values.find(
                     'div', class_='ux-labels-values__values-content').find(
                         'span', class_='ux-textspans').text
                 country = value_text
-                print(f"Country: {value_text}")
+         
               elif label_text == 'Type' and type == '':
                 value_text = values.find(
                     'div', class_='ux-labels-values__values-content').find(
                         'span', class_='ux-textspans').text
                 type = value_text
-                print(f"Type: {value_text}")
+            
               elif label_text == 'UPC' and upc == '':
                 value_text = values.find(
                     'div', class_='ux-labels-values__values-content').find(
                         'span', class_='ux-textspans').text
                 if (value_text != 'Does not apply'):
                   upc = value_text
-                  print(f"UPC: {value_text}")
+          
               elif label_text == 'Model' and model == '':
                 value_text = values.find(
                     'div', class_='ux-labels-values__values-content').find(
                         'span', class_='ux-textspans').text
                 model = value_text
-                print(f"Model: {value_text}")
+              
               elif 'Material' in label_text:
                 value_text = values.find(
                     'div', class_='ux-labels-values__values-content').find(
@@ -400,11 +412,11 @@ def get_product_data():
                     material = value_text
                   else:
                     material += " , " + value_text
-                    print(f"Material : {material}")
+              
         if (checkAll()):
           break
       except:
-        print("An exception occurred at ",url)
+          print(" ")
     # Construct the API response
     api_response = {
         'title':title,
@@ -463,7 +475,18 @@ def get_data():
 
     def UrlScraper(url):
       try:
-          response = requests.get(url, timeout=10)  # Adding timeout
+          headers = {
+              "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0",
+              "Accept-Language": "en-US,en;q=0.5",
+              "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+              "Referer": "https://www.ebay.com/",
+              "Connection": "keep-alive",
+          }
+          print(f"Requesting: {url}")
+          response = requests.get(url, headers=headers, timeout=10)
+          print("HTML snippet:")
+          print(response.text[:1000])
+          
           soup = BeautifulSoup(response.text, 'html.parser')
           evo_rows = soup.find_all('div', class_='ux-layout-section-evo__row')
           for evo_row in evo_rows:
