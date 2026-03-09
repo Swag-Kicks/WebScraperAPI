@@ -4,7 +4,7 @@ url = "http://127.0.0.1:5000/v5/get_data"
 
 # JSON payload jo server ko bhejna hai
 payload = {
-    "product_url": "https://images-wp.stockx.com/news/wp-content/uploads/2022/08/blog-hero-twitter-square-1-1200x1200.jpg"
+    "product_url": "https://www.swag-kicks.com/cdn/shop/products/IMG_3298_20copy_dfa41d5c-336b-4866-99bd-ca7c1a7355e7.jpg?v=1694583064&width=713"
 }
 
 # Request bhejo

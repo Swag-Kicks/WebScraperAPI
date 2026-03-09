@@ -34,7 +34,7 @@ class GoogleLens:
         # options.add_argument("--headless")
         
         # Initialize the WebDriver (make sure you have the correct path to the driver)
-        self.driver = uc.Chrome(version_main=138, options=options)
+        self.driver = uc.Chrome(version_main=144, options=options)
 
 
     def __get_prerender_script(self, page: str):
@@ -1313,7 +1313,19 @@ def get_data6():
         print("Number of urls to be scraped: " + str(len(urls)))
         def get_headers(index):
             print(urls[index])
-            r = requests.get(urls[index], timeout=10)
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0',
+                'Accept-Language': 'en-US,en;q=0.9',
+                'Accept-Encoding': 'gzip, deflate, br',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                'DNT': '1',
+                'Connection': 'keep-alive',
+                'Upgrade-Insecure-Requests': '1',
+                'Referer': 'https://www.ebay.com/'
+            }
+
+            r = requests.get(urls[index], headers=headers, timeout=10)
+            
             soup = BeautifulSoup(r.text, 'html.parser')
             try:
                 pricediv = soup.find('div', class_='x-price-primary')
