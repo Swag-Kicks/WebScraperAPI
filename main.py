@@ -34,7 +34,7 @@ class GoogleLens:
         # options.add_argument("--headless")
         
         # Initialize the WebDriver (make sure you have the correct path to the driver)
-        self.driver = uc.Chrome(version_main=144, options=options)
+        self.driver = uc.Chrome(version_main=152, options=options)
 
 
     def __get_prerender_script(self, page: str):
